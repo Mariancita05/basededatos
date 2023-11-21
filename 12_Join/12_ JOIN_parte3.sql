@@ -13,6 +13,9 @@ OR nombre LIKE 'e%'
 OR nombre LIKE 'i%' 
 OR nombre LIKE 'o%'
 OR nombre LIKE 'u%';
+SELECT * 
+FROM canciones c
+where left (c.nombre, 1) in ("a","e","i","o","u");
 
 -- Canciones
 -- Listar las canciones ordenadas por compositor en forma descendente.
