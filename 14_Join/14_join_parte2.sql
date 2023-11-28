@@ -31,5 +31,10 @@ FROM clientes c JOIN facturas f
 ON f.ClienteID = c.clienteID
 GROUP BY c.contacto;
 
--- Todas las facturas tienen una empresa de correo asociada (enviovia). Generar un listado con todas las empresas de correo, y la cantidad de 
--- facturas correspondientes. Realizar la consulta utilizando RIGHT JOIN.
+-- Todas las facturas tienen una empresa de correo asociada (enviovia). Generar un listado con todas las empresas de 
+-- correo, y la cantidad de facturas correspondientes. Realizar la consulta utilizando RIGHT JOIN.
+SELECT COUNT(f.facturaID), c.Compania 
+FROM facturas f
+RIGHT JOIN correos c
+ON c.CorreoID = f.EnvioVia
+GROUP BY c.Compania;
