@@ -4,11 +4,13 @@
 #Reportes - JOINS
 #Consignas: 
 SELECT * FROM artista;
-SELECT * FROM pelicula p
+
+CREATE VIEW artistaXpelicula AS SELECT a.apellido, a.nombre, p.titulo FROM pelicula p
 JOIN artista_x_pelicula ap
 ON p.id = ap.pelicula_id
 JOIN artista a
 ON ap.artista_id = a.id;
+
 -- Obtener los artistas que han actuado en una o más películas.
 SELECT * 
 FROM artista a

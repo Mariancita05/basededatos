@@ -23,7 +23,11 @@ LEFT JOIN proveedores pr
 ON p.ProveedorID = pr.ProveedorID;
 
 -- Para cada categoría listar el promedio del precio unitario de sus productos.
-
+SELECT  cat.CategoriaNombre, ROUND(AVG(p.PrecioUnitario),2) promedio_precio
+FROM productos productos
+JOIN categorias categorias 
+ON p.CategoriaID = cat.CategoriaID
+GROUP BY cat.CategoriaNombre;
 
 -- Para cada cliente, indicar la última factura de compra. Incluir a los clientes que nunca hayan comprado en e-market.
 SELECT c.contacto, MAX(f.FechaFactura) ultima_factura
@@ -33,7 +37,7 @@ GROUP BY c.contacto;
 
 -- Todas las facturas tienen una empresa de correo asociada (enviovia). Generar un listado con todas las empresas de 
 -- correo, y la cantidad de facturas correspondientes. Realizar la consulta utilizando RIGHT JOIN.
-SELECT COUNT(f.facturaID), c.Compania 
+SELECT c.Compania, COUNT(f.facturaID) cantidad_facturas
 FROM facturas f
 RIGHT JOIN correos c
 ON c.CorreoID = f.EnvioVia
